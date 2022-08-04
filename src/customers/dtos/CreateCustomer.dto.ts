@@ -1,3 +1,4 @@
+import { Get } from "@nestjs/common";
 import { Type } from "class-transformer";
 import { IsEmail, IsNotEmpty, IsNotEmptyObject, IsNumberString, ValidateNested } from "class-validator";
 import { CreateAddressDto } from "./CreateAddress.dto";
@@ -15,4 +16,5 @@ export class CreateCustomerDto{
    @ValidateNested()
    @Type(()=>CreateAddressDto)
    address:CreateAddressDto;
+
 }
