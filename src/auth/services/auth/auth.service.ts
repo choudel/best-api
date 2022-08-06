@@ -6,7 +6,14 @@ export class AuthService {
     constructor(@Inject('USER_SERVICE')private readonly userService: UsersService){
 
     }
-    validateUser(username:string,password:string){
-
+    async validateUser(username:string,password:string){
+        const userDB = await this.userService.findUserByUsername(username);
+        if (userDB && userDB.password===password){
+            console.log("user validation succeded")
+            return userDB;
+        }else{
+            console.log('user validation failed')
+            return null;
+        }
     }
 }
