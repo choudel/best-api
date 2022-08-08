@@ -7,6 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
   app.use(session({
+    name:'NESTJS_SESSION_ID',
     secret: 'ABljlmdlmkAJPJSJLOOOOLlmmmJJJJ',
     resave:false,
     saveUninitialized:false,
@@ -14,7 +15,7 @@ async function bootstrap() {
       maxAge:60000,
     },
   }),
-  )
+  );
   await app.listen(3000);
 }
 bootstrap();
